@@ -21,11 +21,7 @@ class Neighborhood {
       return customer.neighborhoodId === this.id;
     });
   }
-  meals() {
-    const listMeals = this.customers().map(customer => customer.meals());
-    const merged = [].concat.apply([], listMeals);
-    return [...new Set(merged)];
-  }
+
 }
 
 class Meal {
@@ -45,12 +41,7 @@ class Meal {
       return delivery.customer();
     });
   }
-  static comparePrice(meal1, meal2) {
-    return meal2.price - meal1.price;
-  }
-  static byPrice() {
-    return store.meals.sort(this.comparePrice);
-  }
+
 }
 
 class Customer {
@@ -70,11 +61,7 @@ class Customer {
       return delivery.meal();
     });
   }
-  totalSpent() {
-    return this.meals().forEach(meal => {
-      totalCost += meal.price;
-    });
-  }
+
 }
 
 class Delivery {
